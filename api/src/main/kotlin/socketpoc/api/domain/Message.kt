@@ -5,17 +5,24 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.ManyToOne
+import java.util.Date
 
 @Entity
-class User {
+class Message {
 
     @field:Id
     @field:GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int = 0
 
-    @Column(length = 45)
-    var username: String? = null
+    @ManyToOne
+    var from: User = User()
 
-    @Column(length = 16)
-    var password: String? = null
+//    @ManyToOne
+//    val to: User = User()
+
+    @Column(length = 512)
+    var msg: String? = null
+
+    var sentAt: Date? = null
 }
